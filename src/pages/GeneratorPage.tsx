@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import imageCompression from 'browser-image-compression';
 import { CardFormat, CardSummary } from '@/shared/types/card';
 import { toErrorMessage } from '@/shared/api/client';
 import { uploadPhotoToCloudinary } from '@/shared/api/upload.api';
@@ -65,7 +66,16 @@ export function GeneratorPage(): JSX.Element {
     setError(null);
     try {
       const fileName = `upload-${Date.now()}.jpg`;
-      const { filePath } = await uploadPhotoToCloudinary(blob, fileName);
+      
+      const compressionOptions = {
+        maxSizeMB: 0.5,
+        maxWidthOrHeight: 1200,
+        useWebWorker: true,
+      };
+      
+      const compressedBlob = await imageCompression(blob as File, compressionOptions);
+      
+      const { filePath } = await uploadPhotoToCloudinary(compressedBlob, fileName);
 
       const created = await createCard({
         format,
