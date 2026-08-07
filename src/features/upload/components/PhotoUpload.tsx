@@ -91,7 +91,7 @@ export function PhotoUpload({ onPhotoReady }: PhotoUploadProps): JSX.Element {
       <input
         ref={inputRef}
         type="file"
-        accept="image/*,.heic,.heif"
+        accept="image/*"
         onChange={onInputChange}
         hidden
       />
