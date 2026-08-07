@@ -1,5 +1,6 @@
 import { FormEvent, useState, useEffect, useRef } from 'react';
 import html2canvas from 'html2canvas';
+import './passport.css';
 
 interface BuilderFormProps {
   photoBlob?: Blob;
@@ -117,8 +118,6 @@ export function BuilderForm({ photoBlob, onSubmit, onCancel, busy }: BuilderForm
           </button>
         </div>
       </form>
-
-import './passport.css';
 
       <div className="builder-live-preview">
         <h3 className="builder-live-preview__title">LIVE PREVIEW</h3>
