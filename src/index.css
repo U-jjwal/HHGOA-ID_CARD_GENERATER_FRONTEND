@@ -89,27 +89,25 @@ button {
 .hh-header__title {
   font-family: var(--font-serif);
   color: var(--brand-yellow);
-  font-size: clamp(3rem, 10vw, 8rem);
-  line-height: 0.8;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  line-height: 1;
   margin: 0;
   text-transform: uppercase;
-  transform: scaleY(1.6);
-  letter-spacing: -0.05em;
-  font-weight: 400;
+  letter-spacing: -0.02em;
+  font-weight: 800;
 }
 
 .hh-header__hindi {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
-  transform: translate(-50%, -50%) rotate(-5deg);
+  transform: translate(-50%, -50%) rotate(-8deg);
   font-family: 'Arial', sans-serif;
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: bold;
-  color: transparent;
-  -webkit-text-stroke: 2px var(--brand-pink);
-  text-shadow: 3px 3px 0px var(--brand-pink), -3px -3px 0px var(--brand-pink), 3px -3px 0px var(--brand-pink), -3px 3px 0px var(--brand-pink);
+  color: var(--brand-pink);
   z-index: 2;
+  text-shadow: 2px 2px 0px var(--brand-cream);
 }
 
 .hh-header__footer {
@@ -161,15 +159,16 @@ h2 {
 .format-select__option {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
   text-align: left;
-  padding: 24px;
+  padding: 32px 24px;
   border: 4px solid var(--brand-yellow);
   border-radius: 0;
   background: var(--brand-cream);
   color: var(--brand-green);
   transition: transform 0.1s ease, box-shadow 0.1s ease;
-  box-shadow: 4px 4px 0px var(--brand-pink);
+  box-shadow: 6px 6px 0px var(--brand-pink);
+  font-size: 1.1rem;
 }
 
 .format-select__option:hover {
@@ -179,7 +178,7 @@ h2 {
 
 .format-select__option strong {
   font-family: var(--font-mono);
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   color: var(--brand-pink);
   text-transform: uppercase;
 }
@@ -723,4 +722,26 @@ h2 {
   15% { width: 70%; }
   30% { width: 85%; }
   100% { width: 95%; }
+}
+
+.card-view-page__cta {
+  display: block;
+  text-align: center;
+  margin-top: 24px;
+  background: var(--brand-pink);
+  color: var(--brand-cream);
+  padding: 16px 24px;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 8px;
+  border: 2px solid var(--brand-cream);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  font-size: 1.1rem;
+}
+
+.card-view-page__cta:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
 }
