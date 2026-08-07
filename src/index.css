@@ -209,6 +209,8 @@ h2 {
 .card-view-page__image {
   width: 100%;
   max-width: 400px;
+  max-height: 60vh;
+  object-fit: contain;
   display: block;
   margin: 0 auto 24px auto;
   border-radius: 0;
