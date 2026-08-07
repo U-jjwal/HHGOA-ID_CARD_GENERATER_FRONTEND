@@ -105,8 +105,8 @@ export function GeneratorPage(): JSX.Element {
     }
   };
 
-  const handleBuilderSubmit = (fields: BuilderFields) => {
-    void generateCard(fields);
+  const handleBuilderSubmit = (fields: BuilderFields, generatedBlob: Blob) => {
+    void generateCard(fields, generatedBlob);
   };
 
   const heading = useMemo(() => {

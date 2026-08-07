@@ -1,8 +1,9 @@
-import { FormEvent, useState, useEffect } from 'react';
+import { FormEvent, useState, useEffect, useRef } from 'react';
+import { toJpeg } from 'html-to-image';
 
 interface BuilderFormProps {
   photoBlob?: Blob;
-  onSubmit: (fields: { name: string; teamName: string; role: string }) => void;
+  onSubmit: (fields: { name: string; teamName: string; role: string }, generatedBlob: Blob) => void;
   onCancel: () => void;
   busy?: boolean;
 }
@@ -16,6 +17,8 @@ export function BuilderForm({ photoBlob, onSubmit, onCancel, busy }: BuilderForm
   const [role, setRole] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [photoUrl, setPhotoUrl] = useState<string | null>(null);
+  const [isCapturing, setIsCapturing] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (photoBlob) {
@@ -25,7 +28,7 @@ export function BuilderForm({ photoBlob, onSubmit, onCancel, busy }: BuilderForm
     }
   }, [photoBlob]);
 
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     const trimmedName = name.trim();
     const trimmedTeamName = teamName.trim();
@@ -36,8 +39,32 @@ export function BuilderForm({ photoBlob, onSubmit, onCancel, busy }: BuilderForm
       return;
     }
 
+    if (!cardRef.current) return;
+
     setError(null);
-    onSubmit({ name: trimmedName, teamName: trimmedTeamName, role: trimmedRole });
+    setIsCapturing(true);
+
+    try {
+      // Small delay to ensure styles are completely applied
+      await new Promise(r => setTimeout(r, 100));
+      
+      const dataUrl = await toJpeg(cardRef.current, {
+        quality: 0.95,
+        pixelRatio: 2,
+        style: { margin: '0' }
+      });
+      
+      // Convert dataUrl to Blob
+      const res = await fetch(dataUrl);
+      const generatedBlob = await res.blob();
+      
+      onSubmit({ name: trimmedName, teamName: trimmedTeamName, role: trimmedRole }, generatedBlob);
+    } catch (err) {
+      console.error(err);
+      setError('Failed to generate image from preview.');
+    } finally {
+      setIsCapturing(false);
+    }
   };
 
   return (
@@ -83,18 +110,18 @@ export function BuilderForm({ photoBlob, onSubmit, onCancel, busy }: BuilderForm
         )}
 
         <div className="builder-form__actions">
-          <button type="button" onClick={onCancel} disabled={busy}>
+          <button type="button" onClick={onCancel} disabled={busy || isCapturing}>
             Back
           </button>
-          <button type="submit" disabled={busy}>
-            {busy ? 'Generating…' : 'Generate my ID'}
+          <button type="submit" disabled={busy || isCapturing}>
+            {busy || isCapturing ? 'Generating…' : 'Generate my ID'}
           </button>
         </div>
       </form>
 
       <div className="builder-live-preview">
         <h3 className="builder-live-preview__title">LIVE PREVIEW</h3>
-        <div className="builder-live-preview__card">
+        <div className="builder-live-preview__card" ref={cardRef}>
           
           <div className="card-inner-header">
             <div className="card-inner-header__top">
