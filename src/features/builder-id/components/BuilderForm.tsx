@@ -1,5 +1,5 @@
 import { FormEvent, useState, useEffect, useRef } from 'react';
-import { toJpeg } from 'html-to-image';
+import html2canvas from 'html2canvas';
 
 interface BuilderFormProps {
   photoBlob?: Blob;
@@ -48,13 +48,12 @@ export function BuilderForm({ photoBlob, onSubmit, onCancel, busy }: BuilderForm
       // Small delay to ensure styles are completely applied
       await new Promise(r => setTimeout(r, 100));
       
-      const dataUrl = await toJpeg(cardRef.current, {
-        quality: 0.95,
-        pixelRatio: 2,
-        style: { margin: '0' }
+      const canvas = await html2canvas(cardRef.current, {
+        backgroundColor: null,
+        scale: 3
       });
       
-      // Convert dataUrl to Blob
+      const dataUrl = canvas.toDataURL('image/png');
       const res = await fetch(dataUrl);
       const generatedBlob = await res.blob();
       
@@ -138,7 +137,7 @@ import './passport.css';
             <div className="body">
               <svg className="frond-bg" viewBox="0 0 100 100"><path d="M50 100 L55 40 M55 40 C40 30 25 32 15 20 M55 40 C45 22 45 8 35 0 M55 40 C55 20 62 8 58 -2 M55 40 C65 25 80 28 90 18 M55 40 C68 20 85 22 95 30" stroke="#0B4A2E" strokeWidth="2" fill="none"/></svg>
 
-              <svg className="stamp" viewBox="0 0 120 120">
+              <svg className="stamp" viewBox="0 0 120 120" width="104" height="104">
                 <circle cx="60" cy="60" r="52" strokeWidth="1.4" strokeDasharray="2 3"/>
                 <circle cx="60" cy="60" r="44" strokeWidth="1"/>
                 <path id="arcTop" d="M 14 60 A 46 46 0 1 1 106 60" fill="none"/>
