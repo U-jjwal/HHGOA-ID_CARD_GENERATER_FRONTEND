@@ -1,5 +1,3 @@
-import { useRef } from 'react';
-import { toJpeg } from 'html-to-image';
 import { CardSummary } from '@/shared/types/card';
 import { ShareButtons } from '@/features/share/components/ShareButtons';
 
