@@ -10,8 +10,9 @@ import { PhotoUpload } from '@/features/upload/components/PhotoUpload';
 import { CropStage } from '@/features/frame-editor/components/CropStage';
 import { ResultPreview } from '@/features/frame-editor/components/ResultPreview';
 import { BuilderForm } from '@/features/builder-id/components/BuilderForm';
+import { PfpForm } from '@/features/builder-id/components/PfpForm';
 
-type Stage = 'select-format' | 'upload' | 'crop' | 'builder-form' | 'generating' | 'result';
+type Stage = 'select-format' | 'upload' | 'crop' | 'builder-form' | 'pfp-form' | 'generating' | 'result';
 
 interface BuilderFields {
   name: string;
@@ -92,7 +93,7 @@ export function GeneratorPage(): JSX.Element {
       setError(toErrorMessage(err));
       // Send them back to the step they can retry from without re-uploading
       // the photo, since croppedBlob is still in memory.
-      setStage(format === 'builder-id' ? 'builder-form' : 'crop');
+      setStage(format === 'builder-id' ? 'builder-form' : 'pfp-form');
     }
   };
 
@@ -101,11 +102,11 @@ export function GeneratorPage(): JSX.Element {
     if (format === 'builder-id') {
       setStage('builder-form');
     } else {
-      void generateCard(null, blob);
+      setStage('pfp-form');
     }
   };
 
-  const handleBuilderSubmit = (fields: BuilderFields, generatedBlob: Blob) => {
+  const handleBuilderSubmit = (fields: BuilderFields | null, generatedBlob: Blob) => {
     void generateCard(fields, generatedBlob);
   };
 
@@ -119,6 +120,8 @@ export function GeneratorPage(): JSX.Element {
         return 'Frame your photo';
       case 'builder-form':
         return 'Add your details';
+      case 'pfp-form':
+        return 'Ready to frame?';
       case 'generating':
         return 'Generating your card…';
       case 'result':
@@ -161,6 +164,10 @@ export function GeneratorPage(): JSX.Element {
 
       {stage === 'builder-form' && croppedBlob && (
         <BuilderForm photoBlob={croppedBlob} onSubmit={handleBuilderSubmit} onCancel={() => setStage('crop')} />
+      )}
+
+      {stage === 'pfp-form' && croppedBlob && (
+        <PfpForm photoBlob={croppedBlob} onSubmit={handleBuilderSubmit} onCancel={() => setStage('crop')} />
       )}
 
       {stage === 'generating' && (

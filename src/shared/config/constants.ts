@@ -5,4 +5,4 @@ export const MAX_FILE_SIZE_BYTES = 15 * 1024 * 1024; // 15MB, generous for phone
 
 export const SHARE_HASHTAG = '#FrameInGoa';
 export const SHARE_TEXT_PFP = `Just built my HH Goa 2026 profile pic! ${SHARE_HASHTAG}`;
-export const SHARE_TEXT_BUILDER_ID = `Create your own Builder Card: https://hhgoa-id-card-generater-frontend.vercel.app/ \n\n${SHARE_HASHTAG}`;
+export const SHARE_TEXT_BUILDER_ID = `Got my HH Goa 2026 Builder ID!\n\nCreate your own Builder Card: https://hhgoa-id-card-generater-frontend.vercel.app/\n\n${SHARE_HASHTAG}`;

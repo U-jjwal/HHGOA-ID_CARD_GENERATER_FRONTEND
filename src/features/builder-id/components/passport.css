@@ -215,3 +215,84 @@
   pointer-events:none;
   opacity:0.9;
 }
+
+/* ------------------------------------- */
+/* PFP Frame Styles                      */
+/* ------------------------------------- */
+.pfp-card {
+  width: 400px;
+  height: 400px;
+  background: var(--brand-green);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px;
+  border: 4px solid var(--brand-yellow);
+}
+
+.pfp-card__header {
+  position: relative;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.pfp-card__title {
+  font-family: var(--font-serif);
+  color: var(--brand-yellow);
+  font-size: 2.8rem;
+  line-height: 1;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+
+.pfp-card__hindi {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-8deg);
+  font-family: 'Arial', sans-serif;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: var(--brand-pink);
+  z-index: 2;
+  text-shadow: 2px 2px 0px var(--brand-cream);
+}
+
+.pfp-card__photo-ring {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 4px dashed var(--brand-yellow);
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.pfp-card__photo-ring::before {
+  content: '';
+  position: absolute;
+  top: -4px; left: -4px; right: -4px; bottom: -4px;
+  border: 4px solid var(--brand-pink);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.pfp-card__photo-ring img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pfp-card__footer {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--brand-cream);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
