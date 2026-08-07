@@ -163,7 +163,11 @@ export function GeneratorPage(): JSX.Element {
         <BuilderForm photoBlob={croppedBlob} onSubmit={handleBuilderSubmit} onCancel={() => setStage('crop')} />
       )}
 
-      {stage === 'generating' && <p role="status">Hang tight, this only takes a moment…</p>}
+      {stage === 'generating' && (
+        <div role="status" aria-label="Generating your card" className="progress-bar-container">
+          <div className="progress-bar-fill"></div>
+        </div>
+      )}
 
       {stage === 'result' && card && <ResultPreview card={card} onStartOver={resetAll} />}
     </main>

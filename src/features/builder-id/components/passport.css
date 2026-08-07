@@ -81,11 +81,11 @@
 .frond-bg { position:absolute; top:8px; right:16px; opacity:0.08; width:90px; }
 
 .photo-ring {
-  width:112px; height:112px;
+  width:140px; height:140px;
   border-radius:50%;
   margin:2px auto 16px;
   border:3px dashed var(--terracotta);
-  padding:6px;
+  padding:4px;
   position:relative;
   background: radial-gradient(circle, rgba(245,166,35,0.3) 0%, transparent 70%);
 }
@@ -99,7 +99,7 @@
 }
 
 .eyebrow {
-  font-size:11px;
+  font-size:13px;
   letter-spacing:3px;
   color:var(--terracotta);
   font-weight:700;
@@ -110,14 +110,14 @@
 .name {
   font-family:'Fraunces', serif;
   font-weight:700;
-  font-size:33px;
+  font-size:40px;
   color:var(--green);
   line-height:1.05;
   margin:6px 0 4px;
   text-align: left;
 }
 .role {
-  font-size:13px;
+  font-size:16px;
   letter-spacing:1px;
   text-transform:uppercase;
   color:var(--green-deep);
@@ -144,14 +144,14 @@
 .chip.c1, .chip.c3 { background:var(--chip); border:1.5px solid rgba(11,74,46,0.18); }
 .chip.c2 { background:var(--terracotta); }
 .chip .flabel {
-  font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase;
+  font-size:11px; letter-spacing:1.5px; text-transform:uppercase;
   font-weight:700;
   opacity:0.7;
 }
 .chip.c1 .flabel, .chip.c3 .flabel { color:var(--green-deep); }
 .chip.c2 .flabel { color:#F8DCCF; }
 .chip .fvalue {
-  font-weight:700; font-size:16px;
+  font-weight:700; font-size:18px;
   text-align:right;
 }
 .chip.c1 .fvalue, .chip.c3 .fvalue { color:var(--green-deep); }
@@ -164,7 +164,7 @@
   display:flex;
   justify-content:space-between;
   align-items:flex-end;
-  font-size:10px;
+  font-size:12px;
   letter-spacing:0.5px;
 }
 .footer .loc { opacity:.75; }
