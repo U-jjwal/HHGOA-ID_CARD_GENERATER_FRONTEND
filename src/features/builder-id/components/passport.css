@@ -1,0 +1,217 @@
+/* ---------- CARD ---------- */
+:root {
+  --green: #137A4B;
+  --green-deep: #0B4A2E;
+  --cream: #FBF6E8;
+  --terracotta: #C1502E;
+  --chip: #FFFFFF;
+  --orange: #F5A623;
+  --sun2: #F76B1C;
+  --line: rgba(11,74,46,0.28);
+}
+
+#card-wrap { position:relative; }
+.card {
+  width:400px;
+  background:var(--green);
+  border-radius:20px;
+  padding:6px;
+  box-shadow: 0 22px 44px -14px rgba(0,0,0,0.55);
+  position:relative;
+  overflow:hidden;
+}
+.bunting {
+  height:14px;
+  display:flex;
+  background: repeating-linear-gradient(90deg,
+    var(--terracotta) 0 8px, var(--green) 8px 9px,
+    var(--orange) 9px 17px, var(--green) 17px 18px,
+    var(--chip) 18px 26px, var(--green) 26px 27px);
+  border-radius:14px 14px 0 0;
+}
+.head {
+  padding:22px 22px 14px;
+  position:relative;
+  overflow:hidden;
+}
+.palm { position:absolute; opacity:0.16; stroke:var(--cream); fill:none; stroke-width:2; }
+.palm.left { top:-18px; left:-30px; width:110px; height:110px; transform:scaleX(-1); }
+.palm.right { top:-18px; right:-30px; width:110px; height:110px; }
+.sun-glow {
+  position:absolute; top:-40px; right:-40px; width:140px; height:140px;
+  border-radius:50%;
+  background: radial-gradient(circle, var(--orange) 0%, var(--sun2) 55%, transparent 75%);
+  opacity:0.55;
+}
+.masthead {
+  font-family:'Fraunces', serif;
+  font-weight:800;
+  font-size:30px;
+  line-height:1;
+  color:var(--cream);
+  letter-spacing:-0.5px;
+  margin:0;
+  position:relative;
+}
+.masthead .goa {
+  color:var(--chip);
+  font-style:italic;
+  font-weight:600;
+}
+.trials {
+  margin-top:10px;
+  font-size:11.5px;
+  letter-spacing:2px;
+  color: var(--cream);
+  text-transform:uppercase;
+  position:relative;
+  font-weight:700;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  margin-bottom: 0;
+}
+
+.body {
+  background:var(--cream);
+  margin:0 6px 0;
+  border-radius:0;
+  padding:24px 24px 4px;
+  position:relative;
+  border-top:3px dashed var(--orange);
+}
+.frond-bg { position:absolute; top:8px; right:16px; opacity:0.08; width:90px; }
+
+.photo-ring {
+  width:112px; height:112px;
+  border-radius:50%;
+  margin:2px auto 16px;
+  border:3px dashed var(--terracotta);
+  padding:6px;
+  position:relative;
+  background: radial-gradient(circle, rgba(245,166,35,0.3) 0%, transparent 70%);
+}
+.photo-ring .inner {
+  width:100%; height:100%;
+  border-radius:50%;
+  background:#cfe0d3 center/cover no-repeat;
+  display:flex; align-items:center; justify-content:center;
+  font-size:10px; text-align:center; color:var(--green-deep); line-height:1.4;
+  overflow:hidden;
+}
+
+.eyebrow {
+  font-size:11px;
+  letter-spacing:3px;
+  color:var(--terracotta);
+  font-weight:700;
+  text-transform:uppercase;
+  margin: 0;
+  text-align: left;
+}
+.name {
+  font-family:'Fraunces', serif;
+  font-weight:700;
+  font-size:33px;
+  color:var(--green);
+  line-height:1.05;
+  margin:6px 0 4px;
+  text-align: left;
+}
+.role {
+  font-size:13px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:var(--green-deep);
+  font-weight:700;
+  margin: 0;
+  text-align: left;
+}
+.role .at { color:var(--sun2); font-weight:700; }
+
+.chips {
+  margin-top:20px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.chip {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:9px 20px 9px 16px;
+  clip-path: polygon(0 0, 92% 0, 100% 50%, 92% 100%, 0 100%);
+  font-family:'Space Mono', monospace;
+}
+.chip.c1, .chip.c3 { background:var(--chip); border:1.5px solid rgba(11,74,46,0.18); }
+.chip.c2 { background:var(--terracotta); }
+.chip .flabel {
+  font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase;
+  font-weight:700;
+  opacity:0.7;
+}
+.chip.c1 .flabel, .chip.c3 .flabel { color:var(--green-deep); }
+.chip.c2 .flabel { color:#F8DCCF; }
+.chip .fvalue {
+  font-weight:700; font-size:16px;
+  text-align:right;
+}
+.chip.c1 .fvalue, .chip.c3 .fvalue { color:var(--green-deep); }
+.chip.c2 .fvalue { color:#FFFFFF; }
+
+.footer {
+  margin-top:20px;
+  padding:14px 0 16px;
+  border-top:1px dashed var(--line);
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  font-size:10px;
+  letter-spacing:0.5px;
+}
+.footer .loc { opacity:.75; }
+.footer .tag { color:var(--terracotta); font-weight:700; text-align:right; }
+
+.waves {
+  display:block;
+  width:100%;
+  height:26px;
+  margin-top:-2px;
+}
+
+.stamp {
+  position:absolute;
+  width:104px; height:104px;
+  right:6px; top:126px;
+  transform:rotate(-14deg);
+  mix-blend-mode:multiply;
+  opacity:0.85;
+  pointer-events:none;
+}
+.stamp text {
+  font-family:'Space Mono', monospace;
+  font-size:8px;
+  letter-spacing:2px;
+  fill:var(--sun2);
+  text-transform:uppercase;
+}
+.stamp circle { fill:none; stroke:var(--sun2); }
+.stamp .center {
+  font-family:'Fraunces',serif;
+  font-weight:800;
+  font-size:14px;
+  fill:var(--sun2);
+  text-anchor:middle;
+}
+.stamp .center2 {
+  font-size:7.5px;
+  text-anchor:middle;
+  fill:var(--sun2);
+  letter-spacing:1px;
+}
+
+.card-outline {
+  position:absolute; inset:0;
+  border:2px solid var(--terracotta);
+  border-radius:20px;
+  pointer-events:none;
+  opacity:0.9;
+}
